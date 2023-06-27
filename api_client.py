@@ -4,6 +4,7 @@ from helper.logger import log
 
 
 class ApiClient:
+    # класс где происходят отправка запросов на бэк
     __endpoint = "/posts"
 
     def __init__(self, url):
