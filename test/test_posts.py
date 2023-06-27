@@ -10,6 +10,7 @@ class TestPosts:
         res = api.get_posts()
         assert res.status_code == 200, "status code != 200"
         assert Schema.validate(res.json(), get_schema) is True, "Not match schema"
+        assert res.headers["Content-Type"] == 'application/json; charset=utf-8'
 
     def test_expected_200_get_one_posts(self, api: ApiClient, get_one_schema) -> None:
         data = randint(1, 50)
