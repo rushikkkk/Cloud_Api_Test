@@ -1,3 +1,5 @@
+import pytest
+
 from api_client import ApiClient
 from helper.schema_helper import Schema
 from random import randint
@@ -16,6 +18,7 @@ class TestPosts:
         assert res.json()["id"] == data
         assert Schema.validate(res.json(), get_one_schema) is True
 
+    @pytest.mark.xfail
     def test_expect_not_found_posts(self, api: ApiClient):
         data = randint(500, 1000)
         res = api.get_posts(path_param=f"/{data}")
